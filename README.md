@@ -30,10 +30,8 @@ Even.tr is a platform for managing, tracking, and advertising events. It will al
 -----------------------------------
 ## Data Schema
 The even.tr app will require only one table.
-
-#### Events Table
-**Attributes**
-Format: Name: Type (Purpose)
+#### Events Table Attributes
+- Format: Name: Type (Purpose)
 - Email: String (This will serve as an id indicating who created the event)
 - Host: String (This will denote who is hosting the event)
 - EventName: String (Denotes the event's name)
