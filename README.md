@@ -4,7 +4,7 @@
 Even.tr is a platform for managing, tracking, and advertising events. It will allow organizations as well as individuals to create, view, and market events to all users of the platform. Even.tr will provide various data to event creaters and subscribers to provide a better picture of the content and audience at an event.
 
 ### User Stories
-- Login with Google/Facebook
+- Login with Facebook
 - Create event (location, time, title, hashtags, other metadata)
 - View a timeline of upcoming events
     - Sort by different parameters (time, location, hashtags, topic, etc)
