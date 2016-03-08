@@ -1,4 +1,5 @@
 # ***even.tr***
+Welcome to even.tr, events done right.
 
 ## User Stories & Project Description
 #### Description
