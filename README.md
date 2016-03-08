@@ -29,7 +29,7 @@ Even.tr is a platform for managing, tracking, and advertising events. It will al
 
 -----------------------------------
 ## Data Schema
-#### The even.tr app will require only one table.
+The even.tr app will require only one table.
 
 #### Events Table
 **Attributes**
