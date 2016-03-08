@@ -5,14 +5,14 @@ Even.tr is a platform for managing, tracking, and advertising events. It will al
 
 ### User Stories
 - Login with Google/Facebook
+- Create event (location, time, title, hashtags, other metadata)
 - View a timeline of upcoming events
-  - Sort by different parameters (time, location, hashtags, topic, etc)
+    - Sort by different parameters (time, location, hashtags, topic, etc)
 - View a particular event's details (location, time, title, hashtags, other metadata)
-- View attendees of event
+    - View attendees of event
 - RSVP to events
 - View RSVP'd events
 - View location of events
-- Create event (location, time, title, hashtags, other metadata)
 - Modify event attributes
 - Search events (by title, location, hashtags, etc)
 
