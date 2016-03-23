@@ -183,6 +183,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bM6-a4-JXV">
                                 <rect key="frame" x="291" y="72" width="66" height="30"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="onSubmit:" destination="yOm-4x-lQh" eventType="touchUpInside" id="nDf-bs-9H1"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44b-0U-I2u">
                                 <rect key="frame" x="20" y="81" width="263" height="21"/>
@@ -200,6 +203,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="detailsTextField" destination="hTb-vX-50s" id="phW-Lo-NjE"/>
+                        <outlet property="eventImage" destination="JGi-bn-vAd" id="Fis-Uk-eky"/>
+                        <outlet property="eventTitleLabel" destination="44b-0U-I2u" id="K45-1R-Z16"/>
+                        <outlet property="onSubmit" destination="bM6-a4-JXV" id="uuT-nc-F2m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQz-fX-7Jv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

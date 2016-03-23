@@ -10,6 +10,11 @@ import UIKit
 
 class CreateEventViewController: UIViewController {
 
+    @IBOutlet weak var eventTitleLabel: UILabel!
+    @IBOutlet weak var detailsTextField: UITextView!
+    @IBOutlet weak var eventImage: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +26,11 @@ class CreateEventViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func onSubmit(sender: AnyObject) {
+        
+        //do stuff when the user submits their event
+    }
+   
     /*
     // MARK: - Navigation
 
