@@ -8,20 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		012961BF1C7EAB1000E88ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012961BE1C7EAB1000E88ED9 /* AppDelegate.swift */; };
-		012961C11C7EAB1000E88ED9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012961C01C7EAB1000E88ED9 /* ViewController.swift */; };
+		012961C11C7EAB1000E88ED9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012961C01C7EAB1000E88ED9 /* LoginViewController.swift */; };
 		012961C41C7EAB1000E88ED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012961C21C7EAB1000E88ED9 /* Main.storyboard */; };
 		012961C61C7EAB1000E88ED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 012961C51C7EAB1000E88ED9 /* Assets.xcassets */; };
 		012961C91C7EAB1000E88ED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012961C71C7EAB1000E88ED9 /* LaunchScreen.storyboard */; };
+		0160C8A41CA2FD2700FCC0EC /* EventrParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0160C8A31CA2FD2700FCC0EC /* EventrParseClient.swift */; };
+		66AF8C651CA213D2006E8B48 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF8C641CA213D2006E8B48 /* EventsViewController.swift */; };
+		66AF8C681CA2FE06006E8B48 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF8C671CA2FE06006E8B48 /* CreateEventViewController.swift */; };
+		A35325A81CA2F3B500CE330C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35325A61CA2F3B500CE330C /* FBSDKCoreKit.framework */; };
+		A35325A91CA2F3B500CE330C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35325A71CA2F3B500CE330C /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		012961BB1C7EAB1000E88ED9 /* eventr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eventr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		012961BE1C7EAB1000E88ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		012961C01C7EAB1000E88ED9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		012961C01C7EAB1000E88ED9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		012961C31C7EAB1000E88ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		012961C51C7EAB1000E88ED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		012961C81C7EAB1000E88ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		012961CA1C7EAB1000E88ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0160C8A01CA2F64100FCC0EC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		0160C8A31CA2FD2700FCC0EC /* EventrParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventrParseClient.swift; sourceTree = "<group>"; };
+		442F6A1ECF0F29E5FE9EE737 /* Pods-eventr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eventr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eventr/Pods-eventr.debug.xcconfig"; sourceTree = "<group>"; };
+		4DDBA18B4DFA07CBE1F164EB /* libPods-eventr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-eventr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6658B9561CA1E62200B57D80 /* eventr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "eventr-Bridging-Header.h"; path = "eventr/eventr-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		66AF8C641CA213D2006E8B48 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		66AF8C671CA2FE06006E8B48 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		A35325A61CA2F3B500CE330C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		A35325A71CA2F3B500CE330C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		B3B25FBA4900770161C51146 /* Pods-eventr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eventr.release.xcconfig"; path = "Pods/Target Support Files/Pods-eventr/Pods-eventr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35325A81CA2F3B500CE330C /* FBSDKCoreKit.framework in Frameworks */,
+				A35325A91CA2F3B500CE330C /* FBSDKLoginKit.framework in Frameworks */,
+				6EF643751F594143829A014B /* libPods-eventr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +58,8 @@
 			children = (
 				012961BD1C7EAB1000E88ED9 /* eventr */,
 				012961BC1C7EAB1000E88ED9 /* Products */,
+				F08748119447887315497809 /* Pods */,
+				49749FB2EE193E22028FD0AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +74,71 @@
 		012961BD1C7EAB1000E88ED9 /* eventr */ = {
 			isa = PBXGroup;
 			children = (
+				0160C8A21CA2FCCF00FCC0EC /* API */,
+				0160C89F1CA2F5EE00FCC0EC /* Models */,
+				66AF8C661CA213DF006E8B48 /* ViewControllers */,
 				012961BE1C7EAB1000E88ED9 /* AppDelegate.swift */,
-				012961C01C7EAB1000E88ED9 /* ViewController.swift */,
 				012961C21C7EAB1000E88ED9 /* Main.storyboard */,
 				012961C51C7EAB1000E88ED9 /* Assets.xcassets */,
 				012961C71C7EAB1000E88ED9 /* LaunchScreen.storyboard */,
 				012961CA1C7EAB1000E88ED9 /* Info.plist */,
+				6658B9561CA1E62200B57D80 /* eventr-Bridging-Header.h */,
+				6658B94F1CA1DB3100B57D80 /* Framework */,
 			);
 			path = eventr;
+			sourceTree = "<group>";
+		};
+		0160C89F1CA2F5EE00FCC0EC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0160C8A01CA2F64100FCC0EC /* Event.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0160C8A21CA2FCCF00FCC0EC /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0160C8A31CA2FD2700FCC0EC /* EventrParseClient.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		49749FB2EE193E22028FD0AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DDBA18B4DFA07CBE1F164EB /* libPods-eventr.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6658B94F1CA1DB3100B57D80 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				A35325A61CA2F3B500CE330C /* FBSDKCoreKit.framework */,
+				A35325A71CA2F3B500CE330C /* FBSDKLoginKit.framework */,
+			);
+			name = Framework;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		66AF8C661CA213DF006E8B48 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				66AF8C641CA213D2006E8B48 /* EventsViewController.swift */,
+				012961C01C7EAB1000E88ED9 /* LoginViewController.swift */,
+				66AF8C671CA2FE06006E8B48 /* CreateEventViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F08748119447887315497809 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				442F6A1ECF0F29E5FE9EE737 /* Pods-eventr.debug.xcconfig */,
+				B3B25FBA4900770161C51146 /* Pods-eventr.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +148,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 012961CD1C7EAB1000E88ED9 /* Build configuration list for PBXNativeTarget "eventr" */;
 			buildPhases = (
+				60ED88EA41E5E465EC034D88 /* Check Pods Manifest.lock */,
 				012961B71C7EAB1000E88ED9 /* Sources */,
 				012961B81C7EAB1000E88ED9 /* Frameworks */,
 				012961B91C7EAB1000E88ED9 /* Resources */,
+				BAD185D7FC44AD098C644496 /* Embed Pods Frameworks */,
+				DF60DE25C1340AE1A1093D3B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,13 +211,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		60ED88EA41E5E465EC034D88 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BAD185D7FC44AD098C644496 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eventr/Pods-eventr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF60DE25C1340AE1A1093D3B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eventr/Pods-eventr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		012961B71C7EAB1000E88ED9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				012961C11C7EAB1000E88ED9 /* ViewController.swift in Sources */,
+				0160C8A41CA2FD2700FCC0EC /* EventrParseClient.swift in Sources */,
+				012961C11C7EAB1000E88ED9 /* LoginViewController.swift in Sources */,
 				012961BF1C7EAB1000E88ED9 /* AppDelegate.swift in Sources */,
+				66AF8C651CA213D2006E8B48 /* EventsViewController.swift in Sources */,
+				66AF8C681CA2FE06006E8B48 /* CreateEventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +297,7 @@
 		012961CB1C7EAB1000E88ED9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -185,6 +316,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../FacebookSDK\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -210,7 +342,7 @@
 		012961CC1C7EAB1000E88ED9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -229,6 +361,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../FacebookSDK\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -246,23 +379,38 @@
 		};
 		012961CE1C7EAB1000E88ED9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 442F6A1ECF0F29E5FE9EE737 /* Pods-eventr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDK",
+				);
 				INFOPLIST_FILE = eventr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cessation.eventr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "eventr/eventr-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		012961CF1C7EAB1000E88ED9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3B25FBA4900770161C51146 /* Pods-eventr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDK",
+				);
 				INFOPLIST_FILE = eventr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cessation.eventr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "eventr/eventr-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -285,6 +433,7 @@
 				012961CF1C7EAB1000E88ED9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
