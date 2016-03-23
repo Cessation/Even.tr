@@ -12,9 +12,9 @@
 		012961C41C7EAB1000E88ED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012961C21C7EAB1000E88ED9 /* Main.storyboard */; };
 		012961C61C7EAB1000E88ED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 012961C51C7EAB1000E88ED9 /* Assets.xcassets */; };
 		012961C91C7EAB1000E88ED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012961C71C7EAB1000E88ED9 /* LaunchScreen.storyboard */; };
-		6658B95E1CA1EB5600B57D80 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6658B95C1CA1EB5600B57D80 /* FBSDKCoreKit.framework */; };
-		6658B95F1CA1EB5600B57D80 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6658B95D1CA1EB5600B57D80 /* FBSDKLoginKit.framework */; };
 		66AF8C651CA213D2006E8B48 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF8C641CA213D2006E8B48 /* EventsViewController.swift */; };
+		A35325A81CA2F3B500CE330C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35325A61CA2F3B500CE330C /* FBSDKCoreKit.framework */; };
+		A35325A91CA2F3B500CE330C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35325A71CA2F3B500CE330C /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,9 +26,9 @@
 		012961C81C7EAB1000E88ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		012961CA1C7EAB1000E88ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6658B9561CA1E62200B57D80 /* eventr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "eventr-Bridging-Header.h"; path = "eventr/eventr-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		6658B95C1CA1EB5600B57D80 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		6658B95D1CA1EB5600B57D80 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		66AF8C641CA213D2006E8B48 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		A35325A61CA2F3B500CE330C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		A35325A71CA2F3B500CE330C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,8 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6658B95F1CA1EB5600B57D80 /* FBSDKLoginKit.framework in Frameworks */,
-				6658B95E1CA1EB5600B57D80 /* FBSDKCoreKit.framework in Frameworks */,
+				A35325A81CA2F3B500CE330C /* FBSDKCoreKit.framework in Frameworks */,
+				A35325A91CA2F3B500CE330C /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,8 +78,8 @@
 		6658B94F1CA1DB3100B57D80 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				6658B95C1CA1EB5600B57D80 /* FBSDKCoreKit.framework */,
-				6658B95D1CA1EB5600B57D80 /* FBSDKLoginKit.framework */,
+				A35325A61CA2F3B500CE330C /* FBSDKCoreKit.framework */,
+				A35325A71CA2F3B500CE330C /* FBSDKLoginKit.framework */,
 			);
 			name = Framework;
 			path = ..;
@@ -282,6 +282,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDK",
+				);
 				INFOPLIST_FILE = eventr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cessation.eventr;
@@ -296,6 +300,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDK",
+				);
 				INFOPLIST_FILE = eventr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cessation.eventr;
