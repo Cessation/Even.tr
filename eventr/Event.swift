@@ -67,4 +67,41 @@ class Event: NSObject {
         }
         return events
     }
+    
+     /* Method to add an event to Parse */
+    class func postUserImage(withCompletion completion: PFBooleanResultBlock?) {
+        // Create Parse object PFObject
+        let event = PFObject(className: "Event")
+        
+        // Add relevant fields to the object
+//        event["title"] = getPFFileFromImage(image) // PFFile column type
+//        event["description"] = PFUser.currentUser() // Pointer column type that points to PFUser
+//        event["start_time"] = caption
+//        event["end_time"] = 0
+//        event["picture"] = 0
+//        event["hashtags"] = 0
+//        event["author"] = 0
+//        event["id"] = 0
+        
+        // Save object (following function will save the object in Parse asynchronously)
+        event.saveInBackgroundWithBlock(completion)
+    }
+    
+    /**
+     Method to convert UIImage to PFFile
+     
+     - parameter image: Image that the user wants to upload to parse
+     
+     - returns: PFFile for the the data in the image
+     */
+    class func getPFFileFromImage(image: UIImage?) -> PFFile? {
+        // check if image is not nil
+        if let image = image {
+            // get image data and check if that is not nil
+            if let imageData = UIImagePNGRepresentation(image) {
+                return PFFile(name: "image.png", data: imageData)
+            }
+        }
+        return nil
+    }
 }

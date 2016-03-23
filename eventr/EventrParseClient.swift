@@ -10,4 +10,5 @@ import UIKit
 
 class EventrParseClient: NSObject {
 //    static let sharedInstance =
+    
 }

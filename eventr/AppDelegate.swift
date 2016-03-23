@@ -18,6 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        // Initialize Parse
+        // Set applicationId and server based on the values in the Heroku settings.
+        // clientKey is not used on Parse open source unless explicitly configured
+        Parse.initializeWithConfiguration(
+            ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "eventr"
+                configuration.clientKey = "cessation"
+                configuration.server = "https://eventr-app.herokuapp.com/parse"
+            })
+        )
         
         // Override point for customization after application launch.
         return true
