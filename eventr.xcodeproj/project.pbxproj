@@ -25,6 +25,7 @@
 		012961C51C7EAB1000E88ED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		012961C81C7EAB1000E88ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		012961CA1C7EAB1000E88ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0160C8A01CA2F64100FCC0EC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6658B9561CA1E62200B57D80 /* eventr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "eventr-Bridging-Header.h"; path = "eventr/eventr-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		66AF8C641CA213D2006E8B48 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		A35325A61CA2F3B500CE330C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		012961BD1C7EAB1000E88ED9 /* eventr */ = {
 			isa = PBXGroup;
 			children = (
+				0160C89F1CA2F5EE00FCC0EC /* Models */,
 				66AF8C661CA213DF006E8B48 /* ViewControllers */,
 				012961BE1C7EAB1000E88ED9 /* AppDelegate.swift */,
 				012961C21C7EAB1000E88ED9 /* Main.storyboard */,
@@ -73,6 +75,14 @@
 				6658B94F1CA1DB3100B57D80 /* Framework */,
 			);
 			path = eventr;
+			sourceTree = "<group>";
+		};
+		0160C89F1CA2F5EE00FCC0EC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0160C8A01CA2F64100FCC0EC /* Event.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		6658B94F1CA1DB3100B57D80 /* Framework */ = {
@@ -166,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0160C8A11CA2F64100FCC0EC /* Event.swift in Sources */,
 				012961C11C7EAB1000E88ED9 /* LoginViewController.swift in Sources */,
 				012961BF1C7EAB1000E88ED9 /* AppDelegate.swift in Sources */,
 				66AF8C651CA213D2006E8B48 /* EventsViewController.swift in Sources */,
