@@ -8,18 +8,62 @@
 
 import UIKit
 
-class CreateEventViewController: UIViewController {
+class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var detailsTextField: UITextView!
-    @IBOutlet weak var eventImage: UIView!
+    @IBOutlet weak var eventImageView: UIView!
+    var finalImage: UIImage!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let gesture = UITapGestureRecognizer(target: self, action: "tapped:")
+        eventImageView.addGestureRecognizer(gesture)
+        // Do any additional setup after loading the view.
+
 
         // Do any additional setup after loading the view.
     }
+    
+    func tapped(sender:UITapGestureRecognizer){
+        print("Tapped")
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        // Get the image captured by the UIImagePickerController
+        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        finalImage = resize(editedImage, newSize: eventImageView.frame.size)
+        
+        // Do something with the images (based on your use case)
+        eventImageView.backgroundColor = UIColor(patternImage: finalImage)
+        
+        // Dismiss UIImagePickerController to go back to your original view controller
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func resize(image: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRectMake(0, 0, newSize.width, newSize.height))
+        resizeImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -29,7 +73,16 @@ class CreateEventViewController: UIViewController {
     @IBAction func onSubmit(sender: AnyObject) {
         //store and upload data onto events page
         //error checking
-        
+        ParseEvent.postUserEvent(eventObj: sendingEvent) { (success:Bool, error:NSError?) -> Void in
+            if success {
+                print("image saved")
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            else{
+                print(error?.localizedDescription)
+            }
+            
+        }
     }
    
     /*
