@@ -25,10 +25,11 @@ class CreateEventViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+   
     @IBAction func onSubmit(sender: AnyObject) {
+        //store and upload data onto events page
+        //error checking
         
-        //do stuff when the user submits their event
     }
    
     /*
