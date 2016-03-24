@@ -74,14 +74,14 @@ class Event: NSObject {
         let event = PFObject(className: "Event")
         
         // Add relevant fields to the object
-//        event["title"] = getPFFileFromImage(image) // PFFile column type
-//        event["description"] = PFUser.currentUser() // Pointer column type that points to PFUser
-//        event["start_time"] = caption
-//        event["end_time"] = 0
-//        event["picture"] = 0
-//        event["hashtags"] = 0
-//        event["author"] = 0
-//        event["id"] = 0
+        event["title"] = title // PFFile column type
+        event["description"] = desc // Pointer column type that points to PFUser
+//        event["start_time"] = 
+//        event["end_time"] =
+        event["picture"] = getPFFileFromImage(image: picture)
+        event["hashtags"] = hashtags
+        event["author"] = author
+        event["id"] = id
         
         // Save object (following function will save the object in Parse asynchronously)
         event.saveInBackgroundWithBlock(completion)
