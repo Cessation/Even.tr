@@ -7,6 +7,7 @@ Even.tr is a platform for managing, tracking, and advertising events. It will al
 
 #### User Stories
 - Login with Facebook
+- Redirect to main page
 - Create event (location, time, title, hashtags, other metadata)
 - View a timeline of upcoming events
     - Sort by different parameters (time, location, hashtags, topic, etc)

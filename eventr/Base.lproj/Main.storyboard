@@ -184,26 +184,27 @@
                                     <action selector="onSubmit:" destination="yOm-4x-lQh" eventType="touchUpInside" id="bNK-UV-OSG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44b-0U-I2u">
-                                <rect key="frame" x="20" y="81" width="263" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qd-9G-bOm">
                                 <rect key="frame" x="14" y="176" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D6L-27-8d4">
+                                <rect key="frame" x="25" y="80" width="225" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="detailsTextField" destination="hTb-vX-50s" id="phW-Lo-NjE"/>
+                        <outlet property="endDate" destination="Ekx-as-IHo" id="Bx4-TI-hFn"/>
                         <outlet property="eventImageView" destination="JGi-bn-vAd" id="IGM-ct-sFL"/>
-                        <outlet property="eventTitleLabel" destination="44b-0U-I2u" id="K45-1R-Z16"/>
+                        <outlet property="eventTitleField" destination="D6L-27-8d4" id="sjs-Sg-aPh"/>
+                        <outlet property="startDate" destination="z3U-ID-nL4" id="BcN-v0-61A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQz-fX-7Jv" userLabel="First Responder" sceneMemberID="firstResponder"/>

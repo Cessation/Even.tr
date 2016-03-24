@@ -10,7 +10,7 @@ import UIKit
 
 class Event: NSObject {
 
-    var title: NSString?
+    var title: String?
     var desc: NSString?
     var startTime: NSDate?
     var endTime: NSDate?
@@ -33,7 +33,6 @@ class Event: NSObject {
 //            formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
 //            timestamp = formatter.dateFromString(timestampString)
 //        }
-        
         
         // End time
 //        let timestampString = dictionary["end_time"] as? String

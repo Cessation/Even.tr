@@ -11,20 +11,24 @@ import Parse
 
 class ParseEvent: NSObject {
    
-    /* Method to add an event to Parse */
-    class func postUserEvent(eventObj: Event, withCompletion completion: PFBooleanResultBlock?) {
+    /* Method to add an event to Parse 
+     (image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
+     */
+    class func postUserEvent(title: NSString, desc: NSString, picture: UIImage, withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
         let event = PFObject(className: "Event")
-        
+        event["title"] = title
+        event["desc"] = desc
+        event["picture"] = getPFFileFromImage(picture)
         // Add relevant fields to the object
-        event["title"] = eventObj.title // PFFile column type
-        event["description"] = eventObj.desc // Pointer column type that points to PFUser
-        //        event["start_time"] =
-        //        event["end_time"] =
-        event["picture"] = getPFFileFromImage(eventObj.picture)
-        event["hashtags"] = eventObj.hashtags
-        event["author"] = eventObj.author
-        event["id"] = eventObj.eventId
+//        event["title"] = eventObj.title // PFFile column type
+//        event["description"] = eventObj.desc // Pointer column type that points to PFUser
+//        event["start_time"] = ""
+//        event["end_time"] = ""
+//        event["picture"] = getPFFileFromImage(eventObj.picture)
+//        event["hashtags"] = eventObj.hashtags
+//        event["author"] = eventObj.author
+//        event["id"] = eventObj.eventId
         
         // Save object (following function will save the object in Parse asynchronously)
         event.saveInBackgroundWithBlock(completion)

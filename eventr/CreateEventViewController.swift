@@ -10,10 +10,15 @@ import UIKit
 
 class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var eventTitleLabel: UILabel!
+    @IBOutlet weak var eventTitleField: UITextField!
     @IBOutlet weak var detailsTextField: UITextView!
     @IBOutlet weak var eventImageView: UIView!
+    @IBOutlet weak var endDate: UIDatePicker!
+    @IBOutlet weak var startDate: UIDatePicker!
+    
+    
     var finalImage: UIImage!
+    var sendingEvent : Event!
     
     
     override func viewDidLoad() {
@@ -73,16 +78,46 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBAction func onSubmit(sender: AnyObject) {
         //store and upload data onto events page
         //error checking
-        ParseEvent.postUserEvent(eventObj: sendingEvent) { (success:Bool, error:NSError?) -> Void in
-            if success {
-                print("image saved")
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-            else{
-                print(error?.localizedDescription)
-            }
-            
+        print(eventTitleField.text)
+//        sendingEvent.title = eventTitleField.text as? NSString
+//        sendingEvent?.title = eventTitleField.text
+//        sendingEvent?.desc = detailsTextField.text
+//        sendingEvent?.picture = finalImage
+//        sendingEvent?.startTime = startDate.date
+//        sendingEvent?.endTime = endDate.date
+//        sendingEvent?.hashtags = [""]
+//        sendingEvent?.author = "blank"
+//        sendingEvent?.eventId = "yo"
+//        print(sendingEvent)
+//        ParseEvent.postUserEvent(sendingEvent!) { (success:Bool, error:NSError?) -> Void in
+//            if success {
+//                print("image saved")
+//                self.navigationController?.popViewControllerAnimated(true)
+//            }
+//            else{
+//                print(error?.localizedDescription)
+//            }
+//            
+//        }
+        
+        ParseEvent.postUserEvent(eventTitleField.text!, desc: detailsTextField.text!, picture: finalImage!) { (success: Bool, error: NSError?) in
+                        if success {
+                            print("event saved")
+                        }
+                        else{
+                            print(error?.localizedDescription)
+                        }
         }
+//        ParseEvent.postUserEvent(sendingEvent) { (success:Bool, error:NSError?) -> Void in
+//            if success {
+//                print("image saved")
+//                self.navigationController?.popViewControllerAnimated(true)
+//            }
+//            else{
+//                print(error?.localizedDescription)
+//            }
+//            
+//        }
     }
    
     /*
