@@ -17,6 +17,7 @@
 		66AF8C681CA2FE06006E8B48 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF8C671CA2FE06006E8B48 /* CreateEventViewController.swift */; };
 		A35325A81CA2F3B500CE330C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35325A61CA2F3B500CE330C /* FBSDKCoreKit.framework */; };
 		A35325A91CA2F3B500CE330C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35325A71CA2F3B500CE330C /* FBSDKLoginKit.framework */; };
+		C7A46FE4D676855C57A81E84 /* libPods-eventr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDBA18B4DFA07CBE1F164EB /* libPods-eventr.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +47,7 @@
 			files = (
 				A35325A81CA2F3B500CE330C /* FBSDKCoreKit.framework in Frameworks */,
 				A35325A91CA2F3B500CE330C /* FBSDKLoginKit.framework in Frameworks */,
-				6EF643751F594143829A014B /* libPods-eventr.a in Frameworks */,
+				C7A46FE4D676855C57A81E84 /* libPods-eventr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
