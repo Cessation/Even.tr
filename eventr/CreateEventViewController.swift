@@ -81,6 +81,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         endDate.minimumDate = startDate.date
     }
     
+    @IBAction func onCancel(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
    
     @IBAction func onSubmit(sender: AnyObject) {
         //store and upload data onto events page

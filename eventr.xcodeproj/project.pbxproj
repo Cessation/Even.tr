@@ -14,6 +14,7 @@
 		012961C91C7EAB1000E88ED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012961C71C7EAB1000E88ED9 /* LaunchScreen.storyboard */; };
 		015D09F01CA37AAD006F36FB /* ParseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D09EF1CA37AAD006F36FB /* ParseEvent.swift */; };
 		015D09F11CA37D80006F36FB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0160C8A01CA2F64100FCC0EC /* Event.swift */; };
+		66455B461CA59CEE0051DA17 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66455B451CA59CEE0051DA17 /* User.swift */; };
 		66AF8C651CA213D2006E8B48 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF8C641CA213D2006E8B48 /* EventsViewController.swift */; };
 		66AF8C681CA2FE06006E8B48 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AF8C671CA2FE06006E8B48 /* CreateEventViewController.swift */; };
 		66AF8C6F1CA3052F006E8B48 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66AF8C6D1CA3052F006E8B48 /* FBSDKCoreKit.framework */; };
@@ -34,6 +35,7 @@
 		0160C8A01CA2F64100FCC0EC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3FAADC1F3E0825509FBBB19C /* Pods_eventr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eventr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		442F6A1ECF0F29E5FE9EE737 /* Pods-eventr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eventr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eventr/Pods-eventr.debug.xcconfig"; sourceTree = "<group>"; };
+		66455B451CA59CEE0051DA17 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6658B9561CA1E62200B57D80 /* eventr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "eventr-Bridging-Header.h"; path = "eventr/eventr-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		66AF8C641CA213D2006E8B48 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		66AF8C671CA2FE06006E8B48 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				0160C8A01CA2F64100FCC0EC /* Event.swift */,
+				66455B451CA59CEE0051DA17 /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				015D09F01CA37AAD006F36FB /* ParseEvent.swift in Sources */,
 				012961BF1C7EAB1000E88ED9 /* AppDelegate.swift in Sources */,
 				66AF8C651CA213D2006E8B48 /* EventsViewController.swift in Sources */,
+				66455B461CA59CEE0051DA17 /* User.swift in Sources */,
 				66B131181CA4F0E5000AAC4A /* EventTableViewCell.swift in Sources */,
 				015D09F11CA37D80006F36FB /* Event.swift in Sources */,
 				66AF8C681CA2FE06006E8B48 /* CreateEventViewController.swift in Sources */,

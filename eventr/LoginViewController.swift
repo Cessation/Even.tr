@@ -10,6 +10,9 @@ import UIKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
+    var email: String?
+    var firstName: String?
+    var lastName: String?
     
     let FBLoginButton: FBSDKLoginButton = {
         let button = FBSDKLoginButton()
@@ -40,16 +43,20 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             
             if let email  = result["email"] as? String{
-                print(email)
+                self.email = email
+                print(self.email)
                 
             }
             
             if let first_name = result["first_name"] as? String {
-                print(first_name)
+                self.firstName = first_name
+                print(self.firstName)
             }
             
             if let last_name = result["last_name"] as? String {
-                print(last_name)
+                self.lastName = last_name
+                print(self.lastName)
+                
             }
             
             
