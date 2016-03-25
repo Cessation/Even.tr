@@ -15,8 +15,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var eventImageView: UIView!
     @IBOutlet weak var endDate: UIDatePicker!
     @IBOutlet weak var startDate: UIDatePicker!
-    
-    
+    var sDate: String! //start date
+    var eDate: String! //end date
+    var startTime: String!
+    var endTime: String!
     var finalImage: UIImage!
     var sendingEvent : Event!
     
@@ -26,10 +28,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         
         let gesture = UITapGestureRecognizer(target: self, action: "tapped:")
         eventImageView.addGestureRecognizer(gesture)
-        // Do any additional setup after loading the view.
-
-
-        // Do any additional setup after loading the view.
+        startDate.minimumDate = NSDate()
+        endDate.minimumDate = NSDate()
     }
     
     func tapped(sender:UITapGestureRecognizer){
@@ -43,7 +43,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func imagePickerController(picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         // Get the image captured by the UIImagePickerController
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
@@ -74,11 +74,18 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func onStartDateChange(sender: AnyObject) {
+        
+        endDate.minimumDate = startDate.date
+    }
+    
    
     @IBAction func onSubmit(sender: AnyObject) {
         //store and upload data onto events page
         //error checking
-        print(eventTitleField.text)
+//        print(eventTitleField.text)
 //        sendingEvent.title = eventTitleField.text as? NSString
 //        sendingEvent?.title = eventTitleField.text
 //        sendingEvent?.desc = detailsTextField.text
@@ -100,7 +107,31 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
 //            
 //        }
         
-        ParseEvent.postUserEvent(eventTitleField.text!, desc: detailsTextField.text!, picture: finalImage!) { (success: Bool, error: NSError?) in
+        //converting the datepicker inputs to readable start/end date/time
+        if(detailsTextField.text == "") {
+           
+            let alert = UIAlertController(title: "Add Event Description!", message: "Please add a description of your event. You want people to actually attend, dont you? ;)", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else if(eventTitleField.text == "") {
+            let alert = UIAlertController(title: "Add Event Title!", message: "Please add a title for your event.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+        if(finalImage == nil)
+        {
+            finalImage = UIImage(named: "default_image")
+        }
+        let dateFormatter = NSDateFormatter()
+        let timeFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        timeFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        sDate = dateFormatter.stringFromDate(startDate.date)
+        startTime = timeFormatter.stringFromDate(startDate.date)
+        eDate = dateFormatter.stringFromDate(endDate.date)
+        endTime = timeFormatter.stringFromDate(endDate.date)
+        
+        ParseEvent.postUserEvent(eventTitleField.text!, desc: detailsTextField.text!, picture: finalImage!, startDate: sDate, startTime: startTime, endDate: eDate, endTime: endTime) { (success: Bool, error: NSError?) in
                         if success {
                             print("event saved")
                         }
@@ -108,6 +139,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
                             print(error?.localizedDescription)
                         }
         }
+        
+        self.dismissViewControllerAnimated(true, completion:{})
+        }
+            
 //        ParseEvent.postUserEvent(sendingEvent) { (success:Bool, error:NSError?) -> Void in
 //            if success {
 //                print("image saved")

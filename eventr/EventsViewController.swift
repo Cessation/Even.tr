@@ -7,16 +7,42 @@
 //
 
 import UIKit
+import Parse
 
+class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-
-class EventsViewController: UIViewController {
-
+    @IBOutlet weak var tableView: UITableView!
+    var events: [PFObject]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        print("View did appear")
+        super.viewDidAppear(animated)
+        let query = PFQuery(className: "Event")
+        query.orderByDescending("createdAt")
+        //query.includeKey("author")
+        query.limit = 20
+        
+        // fetch data asynchronously
+        query.findObjectsInBackgroundWithBlock { (events: [PFObject]?, error: NSError?) -> Void in
+            if let events = events {
+                self.events = events
+                self.tableView.reloadData()
+                
+            } else {
+                print("Error")
+            }
+        }
+        
+        self.tableView.reloadData()
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -28,6 +54,33 @@ class EventsViewController: UIViewController {
         FBSDKLoginManager().logOut()
         self.dismissViewControllerAnimated(true, completion:{})
     }
+    
+    //Uncomment cell.date... and cell.time... when the Heruko backend has been cleaned!!!
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventTableViewCell
+        cell.postPic = events![indexPath.row]["picture"] as? PFFile
+        cell.title = events![indexPath.row]["title"] as? String
+        let startDate = events![indexPath.row]["startDate"] as? String
+        let endDate = events![indexPath.row]["endDate"] as? String
+        //cell.date = [startDate!,endDate!]
+        let startTime = events![indexPath.row]["startTime"] as? String
+        let endTime = events![indexPath.row]["endTime"] as? String
+        //cell.time = [startTime!, endTime!]
+        cell.attendeesLabel.text = "- 0"
+        return cell
+        
+    }
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if events != nil {
+            return events!.count
+        } else {
+            return 0
+        }
+    }
+    
+
 
     /*
     // MARK: - Navigation

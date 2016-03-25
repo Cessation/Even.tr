@@ -12,12 +12,15 @@ class Event: NSObject {
 
     var title: String?
     var desc: NSString?
-    var startTime: NSDate?
-    var endTime: NSDate?
+    var startDate: String?
+    var startTime: String?
+    var endTime: String?
+    var endDate: String?
     var picture: UIImage?
     var hashtags: [NSString]?
     var author: NSString
     var eventId: NSString
+    var attendees: [String]?
     
     init(dictionary: NSDictionary) {
         // Event Title
@@ -53,7 +56,15 @@ class Event: NSObject {
         
         // Event Id
         eventId = dictionary["id"] as! String
+    
+        startDate = dictionary["startDate"] as? String
+        startTime = dictionary["startTime"] as? String
+        endDate = dictionary["endDate"] as? String
+        endTime = dictionary["endTime"] as? String
         
+        //list of attendees by their key
+        // the number of attendees can be found with this
+        attendees = dictionary["attendees"] as? [String]
         
     }
     
