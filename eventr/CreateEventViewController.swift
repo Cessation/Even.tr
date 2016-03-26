@@ -8,8 +8,10 @@
 
 import UIKit
 
-class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
 
+    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var eventTitleField: UITextField!
     @IBOutlet weak var detailsTextField: UITextView!
     @IBOutlet weak var eventImageView: UIView!
@@ -30,6 +32,9 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         eventImageView.addGestureRecognizer(gesture)
         startDate.minimumDate = NSDate()
         endDate.minimumDate = NSDate()
+        scrollView.delegate = self
+        //scrollView.contentSize = contentView.frame.size
+        //scrollView.scrollEnabled = true
     }
     
     func tapped(sender:UITapGestureRecognizer){
@@ -159,6 +164,11 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
 //            }
 //            
 //        }
+    }
+    
+    
+    @IBAction func hideKeyboard(sender: AnyObject) {
+        scrollView.endEditing(true)
     }
    
     /*

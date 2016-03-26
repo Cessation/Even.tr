@@ -19,6 +19,10 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -54,7 +58,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.dismissViewControllerAnimated(true, completion:{})
     }
     
-    //Uncomment cell.date... and cell.time... when the Heruko backend has been cleaned!!!
+    //Uncomment cell.date...,cell.time..., and cell.attendees when the Heruko backend has been cleaned!!!
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventTableViewCell
         cell.postPic = events![indexPath.row]["picture"] as? PFFile
@@ -65,7 +69,8 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let startTime = events![indexPath.row]["startTime"] as? String
         let endTime = events![indexPath.row]["endTime"] as? String
         //cell.time = [startTime!, endTime!]
-        cell.attendeesLabel.text = "- 0"
+        //cell.attendeesLabel.text = "- \(events![indexPath.row]["attendees"].count)" as? String
+
         return cell
         
     }
@@ -80,7 +85,11 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
 
-
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+            viewDidAppear(true)
+            refreshControl.endRefreshing()
+    }
+    
     /*
     // MARK: - Navigation
 
