@@ -43,11 +43,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             
-            let firstName = result["first_name"] as? String
+            let firstName = result.objectForKey("first_name") as? String
 
-            let lastName = result["last_name"] as? String
+            let lastName = result.objectForKey("last_name") as? String
             
-            if let email  = result["email"] as? String{
+            if let email  = result.objectForKey("email") as? String{
                 let query = PFQuery(className: "User")
                 query.whereKey("email", equalTo: email)
                 query.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
