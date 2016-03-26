@@ -7,12 +7,11 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-    
-    var email: String?
-    var firstName: String?
-    var lastName: String?
+   
+    var user: User?
     
     let FBLoginButton: FBSDKLoginButton = {
         let button = FBSDKLoginButton()
@@ -34,7 +33,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func fetchProfile(){
         
-        let parameters = ["fields": "email, first_name, last_name"]
+        // uses the user's email to see if they are a new user by checking the parse backend. If they exist, the events list associated with that email is loaded from parse else, a new user is added to parse with with a empty events list
+        
+        let parameters = ["fields": "email,first_name,last_name"]
         FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler { (connection, result, error) -> Void in
             
             if error != nil {
@@ -42,25 +43,36 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             
+            let firstName = result["first_name"] as? String
+
+            let lastName = result["last_name"] as? String
+            
             if let email  = result["email"] as? String{
-                self.email = email
-                print(self.email)
-                
+                let query = PFQuery(className: "User")
+                query.whereKey("email", equalTo: email)
+                query.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
+                    
+                    let user = users!.first
+                    let dict: [String:String] = ["firstName": firstName!, "lastName": lastName!, "email": email]
+                    self.user = User(dictionary: dict)
+                    if users?.count != 0 {
+                        self.user!.events = user!["events"] as? [Event]
+                         print("user loaded")
+                    } else {
+                        ParseUser.postUser(firstName,lastName: lastName,email: email) { (success: Bool, error: NSError?) in
+                            if success {
+                                print("user saved")
+                            }
+                            else{
+                                print(error?.localizedDescription)
+                            }
+                        }
+
+                    }
+                    self.performSegueWithIdentifier("EventsPage", sender: self)
+                }
+
             }
-            
-            if let first_name = result["first_name"] as? String {
-                self.firstName = first_name
-                print(self.firstName)
-            }
-            
-            if let last_name = result["last_name"] as? String {
-                self.lastName = last_name
-                print(self.lastName)
-                
-            }
-            
-            
-            self.performSegueWithIdentifier("EventsPage", sender: self)
             
         }
         
@@ -68,13 +80,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
-            print("Completed login")
-            self.performSegueWithIdentifier("EventsPage", sender: self)
-
-    }
-
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        if let _ = FBSDKAccessToken.currentAccessToken(){
         
+            print("Completed login")
+            fetchProfile()
+            self.performSegueWithIdentifier("EventsPage", sender: self)
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        PFUser.logOut()
     }
     
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
@@ -87,7 +102,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("test")
+        
     }
 
 

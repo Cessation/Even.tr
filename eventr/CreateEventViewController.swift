@@ -126,6 +126,8 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         {
             finalImage = UIImage(named: "default_image")
         }
+        
+        //set the start/end date/time variables in a readable format
         let dateFormatter = NSDateFormatter()
         let timeFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle

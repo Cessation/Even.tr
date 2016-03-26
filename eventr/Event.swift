@@ -20,7 +20,7 @@ class Event: NSObject {
     var hashtags: [NSString]?
     var author: NSString
     var eventId: NSString
-    var attendees: [String]?
+    var attendees: [User]?
     
     init(dictionary: NSDictionary) {
         // Event Title
@@ -64,7 +64,7 @@ class Event: NSObject {
         
         //list of attendees by their key
         // the number of attendees can be found with this
-        attendees = dictionary["attendees"] as? [String]
+        attendees = dictionary["attendees"] as? [User]
         
     }
     

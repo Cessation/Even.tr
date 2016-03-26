@@ -22,7 +22,6 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewDidAppear(animated: Bool) {
-        print("View did appear")
         super.viewDidAppear(animated)
         let query = PFQuery(className: "Event")
         query.orderByDescending("createdAt")
