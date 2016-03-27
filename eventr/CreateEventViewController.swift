@@ -23,11 +23,10 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     var endTime: String!
     var finalImage: UIImage!
     var sendingEvent : Event!
-    
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let gesture = UITapGestureRecognizer(target: self, action: "tapped:")
         eventImageView.addGestureRecognizer(gesture)
         startDate.minimumDate = NSDate()
@@ -142,7 +141,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         eDate = dateFormatter.stringFromDate(endDate.date)
         endTime = timeFormatter.stringFromDate(endDate.date)
         
-        ParseEvent.postUserEvent(eventTitleField.text!, desc: detailsTextField.text!, picture: finalImage!, startDate: sDate, startTime: startTime, endDate: eDate, endTime: endTime) { (success: Bool, error: NSError?) in
+            ParseEvent.postUserEvent(eventTitleField.text!, desc: detailsTextField.text!, picture: finalImage!, startDate: sDate, startTime: startTime, endDate: eDate, endTime: endTime, hashtags: [], author: user!.firstName! + " " + user!.lastName!, id: "") { (success: Bool, error: NSError?) in
                         if success {
                             print("event saved")
                         }

@@ -57,6 +57,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     self.user = User(dictionary: dict)
                     if users?.count != 0 {
                         self.user!.events = user!["events"] as? [Event]
+                        self.user!.myevents = user!["myevents"] as? [Event]
+                        self.user!.details = user!["details"] as? String
                          print("user loaded")
                     } else {
                         ParseUser.postUser(firstName,lastName: lastName,email: email) { (success: Bool, error: NSError?) in
@@ -67,7 +69,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                                 print(error?.localizedDescription)
                             }
                         }
-
+                        
+                        self.user!.events = []
+                        self.user!.myevents = []
+                        self.user!.details = ""
                     }
                     self.performSegueWithIdentifier("EventsPage", sender: self)
                 }
@@ -102,6 +107,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+         let tabBarController = segue.destinationViewController as! UITabBarController
+         let navigationViewController0 = tabBarController.viewControllers![0] as! UINavigationController
+         let navigationViewController1 = tabBarController.viewControllers![1] as! UINavigationController
+         let profileViewController = navigationViewController1.viewControllers[0] as! ProfileViewController
+        profileViewController.user = user
+        let eventsViewController = navigationViewController0.viewControllers[0] as! EventsViewController
+        eventsViewController.user = user
+  
         
     }
 

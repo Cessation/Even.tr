@@ -20,9 +20,11 @@ class ParseUser: NSObject {
         user["lastName"] = lastName
         user["email"] = email
         user["events"] = []
+        user["myevents"] = []
+        user["details"] = ""
         user.saveInBackgroundWithBlock(completion)
     }
     
-    //need to add an addEvent API, so when a user rsvps to going to an event, that event will be added to their events list
+    //need to add an addEvent API, so when a user rsvps to going to an event, that event will be added to their events list. As with other changes that can occur
 
 }

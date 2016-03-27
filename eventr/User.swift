@@ -14,6 +14,8 @@ class User: NSObject {
     var firstName: String?
     var lastName: String?
     var events: [Event]?
+    var myevents: [Event]?
+    var details: String?
     
     init(dictionary: NSDictionary){
         
@@ -21,6 +23,8 @@ class User: NSObject {
         lastName = dictionary["lastName"] as? String
         email = dictionary["email"] as? String
         events = dictionary["events"] as? [Event]
+        myevents = dictionary["myevents"] as? [Event]
+        details = dictionary["details"] as? String
     }
    
 }

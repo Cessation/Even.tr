@@ -13,6 +13,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var tableView: UITableView!
     var events: [PFObject]?
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,14 +91,30 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             refreshControl.endRefreshing()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        switch segue.identifier!{
+            
+            case "EventDetailsSegue":
+            let cell = sender as! UITableViewCell
+            let indexpath = tableView.indexPathForCell(cell)
+            let event = events![indexpath!.row]
+            let eventdetailsViewController = segue.destinationViewController as! EventDetailsViewController
+            
+            // need to convert PFFile to UIImage for event pic!
+            
+            let dict: [String: AnyObject] = ["title":event["title"] as! String, "description":event["description"] as! String, "startTime":event["startTime"] as! String, "endTime":event["endTime"] as! String, "startDate":event["startDate"] as! String, "endDate":event["endDate"] as! String, /*"picture":event["picture"] as! UIImage,*/ "author": event["author"] as! String, "id": event["id"] as! String, "attendees": event["attendees"] as! [User]]
+            eventdetailsViewController.event = Event(dictionary: dict)
+            break
+            
+            case "CreateEventSegue":
+            let createeventViewController = segue.destinationViewController as! CreateEventViewController
+            createeventViewController.user = user
+            break
+            
+        default: print("Uknown Segue!")
     }
-    */
 
+
+    }
 }

@@ -14,18 +14,21 @@ class ParseEvent: NSObject {
     /* Method to add an event to Parse 
      (image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
      */
-    class func postUserEvent(title: NSString, desc: NSString, picture: UIImage, startDate: String, startTime: String, endDate: String, endTime: String ,withCompletion completion: PFBooleanResultBlock?) {
+    class func postUserEvent(title: NSString, desc: NSString, picture: UIImage, startDate: String, startTime: String, endDate: String, endTime: String, hashtags: [String], author: String, id: String ,withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
         let event = PFObject(className: "Event")
         event["title"] = title
-        event["desc"] = desc
+        event["description"] = desc
         event["picture"] = getPFFileFromImage(picture)
         event["startDate"] = startDate
         event["startTime"] = startTime
         event["endDate"] = endDate
         event["endTime"] = endTime
         event["attendees"] = []
-
+        event["hashtags"] = hashtags
+        event["author"] = author
+        event["id"] = id
+        
         // Add relevant fields to the object
 //        event["title"] = eventObj.title // PFFile column type
 //        event["description"] = eventObj.desc // Pointer column type that points to PFUser

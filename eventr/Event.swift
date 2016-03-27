@@ -19,8 +19,8 @@ class Event: NSObject {
     var picture: UIImage?
     var hashtags: [NSString]?
     var author: NSString
-    var eventId: NSString
-    var attendees: [User]?
+    var id: NSString
+    var attendees: [User]? //can this be stored in parse???
     
     init(dictionary: NSDictionary) {
         // Event Title
@@ -55,7 +55,7 @@ class Event: NSObject {
         author = dictionary["author"] as! String
         
         // Event Id
-        eventId = dictionary["id"] as! String
+        id = dictionary["id"] as! String
     
         startDate = dictionary["startDate"] as? String
         startTime = dictionary["startTime"] as? String
