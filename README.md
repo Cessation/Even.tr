@@ -43,3 +43,5 @@ The even.tr app will require only one table.
 - Image: Image (Image uploaded and associated with event)
 - Hashtags: Array (An array of hashtags associated with the event)
 - RSVPCount: Integer (The # of persons that have committed to attending the event)
+
+<img src='http://i.imgur.com/6En38kO.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
