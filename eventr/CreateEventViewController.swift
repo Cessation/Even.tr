@@ -43,6 +43,9 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
         detailsTextField.delegate = self
         detailsTextField.text = "Event Details"
         detailsTextField.textColor = UIColor.lightGrayColor()
+        
+        self.view.backgroundColor = UIColor(red:0.76, green:0.96, blue:1.00, alpha:1.0)
+
     }
     
     func tapped(sender:UITapGestureRecognizer){
