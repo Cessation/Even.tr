@@ -29,7 +29,7 @@ class ParseEvent: NSObject {
         event["author"] = author
         event["id"] = id
         
-        // Add relevant fields to the object
+        // Add relevant fields to the 
 //        event["title"] = eventObj.title // PFFile column type
 //        event["description"] = eventObj.desc // Pointer column type that points to PFUser
 //        event["start_time"] = ""

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ALCameraViewController
 
-class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
+class CreateEventViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate, UITextViewDelegate {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -17,6 +18,7 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var eventImageView: UIView!
     @IBOutlet weak var endDate: UIDatePicker!
     @IBOutlet weak var startDate: UIDatePicker!
+    @IBOutlet weak var locationTextField: UITextField!
     var sDate: String! //start date
     var eDate: String! //end date
     var startTime: String!
@@ -32,34 +34,102 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
         startDate.minimumDate = NSDate()
         endDate.minimumDate = NSDate()
         scrollView.delegate = self
-        //scrollView.contentSize = contentView.frame.size
-        //scrollView.scrollEnabled = true
+        scrollView.contentSize = contentView.frame.size
+        scrollView.scrollEnabled = true
+        
+        detailsTextField.delegate = self
+        detailsTextField.text = "Event Details"
+        detailsTextField.textColor = UIColor.lightGrayColor()
     }
     
     func tapped(sender:UITapGestureRecognizer){
         print("Tapped")
-        let vc = UIImagePickerController()
-        vc.delegate = self
-        vc.allowsEditing = true
-        vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         
-        self.presentViewController(vc, animated: true, completion: nil)
+        let croppingEnabled = true
+        let cameraViewController = ALCameraViewController(croppingEnabled: croppingEnabled) { image in
+            // Do something with your image here.
+            // If cropping is enabled this image will be the cropped version
+            let (img,_) = image
+            if img != nil{
+                print("before resize")
+                self.finalImage = self.resize(img!, newSize: self.eventImageView.frame.size)
+                print("after resize")
+                self.eventImageView.backgroundColor = UIColor(patternImage: self.finalImage)
+                print("Got to complete")
+            }
+            
+        }
+        
+        presentViewController(cameraViewController, animated: true, completion: nil)
+//        let vc = UIImagePickerController()
+//        vc.delegate = self
+//        vc.allowsEditing = true
+//        vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+//        
+//        self.presentViewController(vc, animated: true, completion: nil)
+    }
+
+//    func imagePickerController(picker: UIImagePickerController,
+//                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        // Get the image captured by the UIImagePickerController
+//        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+//        
+//        finalImage = resize(editedImage, newSize: eventImageView.frame.size)
+//        
+//        // Do something with the images (based on your use case)
+//        eventImageView.backgroundColor = UIColor(patternImage: finalImage)
+//        
+//        // Dismiss UIImagePickerController to go back to your original view controller
+//        dismissViewControllerAnimated(true, completion: nil)
+//    }
+    
+//    func tapped(sender:UITapGestureRecognizer){
+//        print("Tapped")
+//        let vc = UIImagePickerController()
+//        vc.delegate = self
+//        vc.allowsEditing = true
+//        vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+//        
+//        self.presentViewController(vc, animated: true, completion: nil)
+//    }
+//    
+//    func imagePickerController(picker: UIImagePickerController,
+//                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        // Get the image captured by the UIImagePickerController
+//        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+//        
+//        finalImage = resize(editedImage, newSize: eventImageView.frame.size)
+//        
+//        // Do something with the images (based on your use case)
+//        eventImageView.backgroundColor = UIColor(patternImage: finalImage)
+//        
+//        // Dismiss UIImagePickerController to go back to your original view controller
+//        dismissViewControllerAnimated(true, completion: nil)
+//    }
+    
+    // ================== For Text field editing ========================================
+    
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView.textColor == UIColor.lightGrayColor() {
+            textView.text = nil
+            textView.textColor = UIColor.blackColor()
+        }
     }
     
-    func imagePickerController(picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        // Get the image captured by the UIImagePickerController
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        
-        finalImage = resize(editedImage, newSize: eventImageView.frame.size)
-        
-        // Do something with the images (based on your use case)
-        eventImageView.backgroundColor = UIColor(patternImage: finalImage)
-        
-        // Dismiss UIImagePickerController to go back to your original view controller
-        dismissViewControllerAnimated(true, completion: nil)
+    func textViewDidEndEditing(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Write here..."
+            textView.textColor = UIColor.lightGrayColor()
+        }
     }
+    
+    // ================== For Text field editing ========================================
+    
+    
+
     
     func resize(image: UIImage, newSize: CGSize) -> UIImage {
         let resizeImageView = UIImageView(frame: CGRectMake(0, 0, newSize.width, newSize.height))

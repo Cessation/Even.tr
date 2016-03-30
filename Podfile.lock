@@ -1,12 +1,15 @@
 PODS:
+  - ALCameraViewController (1.1.8)
   - Bolts/Tasks (1.6.0)
   - Parse (1.13.0):
     - Bolts/Tasks (~> 1.6)
 
 DEPENDENCIES:
+  - ALCameraViewController
   - Parse
 
 SPEC CHECKSUMS:
+  ALCameraViewController: be821eead12ada8f9fd6a8fafe881d2da9713159
   Bolts: f52a250053bb517ca874523c3913776359ab3def
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
 
