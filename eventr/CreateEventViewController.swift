@@ -19,6 +19,9 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var endDate: UIDatePicker!
     @IBOutlet weak var startDate: UIDatePicker!
     @IBOutlet weak var locationTextField: UITextField!
+    
+    @IBOutlet weak var addPictureLabel: UILabel!
+    
     var sDate: String! //start date
     var eDate: String! //end date
     var startTime: String!
@@ -49,6 +52,7 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
         let cameraViewController = ALCameraViewController(croppingEnabled: croppingEnabled) { image in
             // Do something with your image here.
             // If cropping is enabled this image will be the cropped version
+            print(image)
             let (img,_) = image
             if img != nil{
                 print("before resize")
@@ -56,11 +60,11 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
                 print("after resize")
                 self.eventImageView.backgroundColor = UIColor(patternImage: self.finalImage)
                 print("Got to complete")
+                self.addPictureLabel.hidden=true
             }
-            
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
-        
-        presentViewController(cameraViewController, animated: true, completion: nil)
+        self.presentViewController(cameraViewController, animated: true, completion: nil)
 //        let vc = UIImagePickerController()
 //        vc.delegate = self
 //        vc.allowsEditing = true
