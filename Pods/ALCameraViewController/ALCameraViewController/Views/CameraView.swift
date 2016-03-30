@@ -114,13 +114,13 @@ public class CameraView: UIView {
     
     private func createPreview() {
         device = cameraWithPosition(currentPosition)
-//        if device.hasFlash {
-//            do {
-//                try device.lockForConfiguration()
-//                device.flashMode = .Auto
-//                device.unlockForConfiguration()
-//            } catch _ {}
-//        }
+        if device.hasFlash {
+            do {
+                try device.lockForConfiguration()
+                device.flashMode = .Auto
+                device.unlockForConfiguration()
+            } catch _ {}
+        }
         
         let outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
         
