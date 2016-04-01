@@ -19,7 +19,6 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var endDate: UIDatePicker!
     @IBOutlet weak var startDate: UIDatePicker!
     @IBOutlet weak var locationTextField: UITextField!
-    
     @IBOutlet weak var addPictureLabel: UILabel!
     
     var sDate: String! //start date
@@ -27,7 +26,7 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
     var startTime: String!
     var endTime: String!
     var finalImage: UIImage!
-    var sendingEvent : Event!
+    //var sendingEvent : Event!
     var user: User?
     
     override func viewDidLoad() {
@@ -128,7 +127,7 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
     
     func textViewDidEndEditing(textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Write here..."
+            textView.text = "Event Details"
             textView.textColor = UIColor.lightGrayColor()
         }
     }
@@ -168,38 +167,18 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
     }
    
     @IBAction func onSubmit(sender: AnyObject) {
-        //store and upload data onto events page
-        //error checking
-//        print(eventTitleField.text)
-//        sendingEvent.title = eventTitleField.text as? NSString
-//        sendingEvent?.title = eventTitleField.text
-//        sendingEvent?.desc = detailsTextField.text
-//        sendingEvent?.picture = finalImage
-//        sendingEvent?.startTime = startDate.date
-//        sendingEvent?.endTime = endDate.date
-//        sendingEvent?.hashtags = [""]
-//        sendingEvent?.author = "blank"
-//        sendingEvent?.eventId = "yo"
-//        print(sendingEvent)
-//        ParseEvent.postUserEvent(sendingEvent!) { (success:Bool, error:NSError?) -> Void in
-//            if success {
-//                print("image saved")
-//                self.navigationController?.popViewControllerAnimated(true)
-//            }
-//            else{
-//                print(error?.localizedDescription)
-//            }
-//            
-//        }
         
         //converting the datepicker inputs to readable start/end date/time
-        if(detailsTextField.text == "") {
-           
-            let alert = UIAlertController(title: "Add Event Description!", message: "Please add a description of your event. You want people to actually attend, dont you? ;)", preferredStyle: UIAlertControllerStyle.Alert)
+        if(eventTitleField.text == "") {
+            let alert = UIAlertController(title: "Add Event Title!", message: "Please add a title for your event.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
-        } else if(eventTitleField.text == "") {
-            let alert = UIAlertController(title: "Add Event Title!", message: "Please add a title for your event.", preferredStyle: UIAlertControllerStyle.Alert)
+        } else  if(locationTextField.text == ""){
+            let alert = UIAlertController(title: "Add Location of Event!", message: "Please add the location of your event.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else if(detailsTextField.text == "Event Details"){
+            let alert = UIAlertController(title: "Add Event Description!", message: "Please add a description of your event. You want people to actually attend, dont you? ;)", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
@@ -218,7 +197,7 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
         eDate = dateFormatter.stringFromDate(endDate.date)
         endTime = timeFormatter.stringFromDate(endDate.date)
         
-            ParseEvent.postUserEvent(eventTitleField.text!, desc: detailsTextField.text!, picture: finalImage!, startDate: sDate, startTime: startTime, endDate: eDate, endTime: endTime, hashtags: [], author: user!.firstName! + " " + user!.lastName!, id: "") { (success: Bool, error: NSError?) in
+            ParseEvent.postUserEvent(eventTitleField.text!, desc: detailsTextField.text!, picture: finalImage!, startDate: sDate, startTime: startTime, endDate: eDate, endTime: endTime, hashtags: [], author: user!.firstName! + " " + user!.lastName!, id: "", location: locationTextField.text!) { (success: Bool, error: NSError?) in
                         if success {
                             print("event saved")
                         }

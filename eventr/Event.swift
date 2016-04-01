@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class Event: NSObject {
 
@@ -16,11 +17,12 @@ class Event: NSObject {
     var startTime: String?
     var endTime: String?
     var endDate: String?
-    var picture: UIImage?
+    var picture: PFFile?
     var hashtags: [NSString]?
     var author: NSString
     var id: NSString
-    var attendees: [User]? //can this be stored in parse???
+    var attendees: [User]?
+    var location: String?
     
     init(dictionary: NSDictionary) {
         // Event Title
@@ -46,7 +48,7 @@ class Event: NSObject {
 //        }
         
         // Picture
-        picture = dictionary["picture"] as? UIImage
+        picture = dictionary["picture"] as? PFFile
         
         // Hashtags
         hashtags = dictionary["hashtags"] as? [String]
@@ -65,6 +67,7 @@ class Event: NSObject {
         //list of attendees by their key
         // the number of attendees can be found with this
         attendees = dictionary["attendees"] as? [User]
+        location = dictionary["location"] as? String
         
     }
     

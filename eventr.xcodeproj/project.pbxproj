@@ -201,7 +201,7 @@
 				TargetAttributes = {
 					012961BA1C7EAB1000E88ED9 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = D8WJP5ZV42;
+						DevelopmentTeam = 2DL59C4T3K;
 					};
 				};
 			};
@@ -422,7 +422,7 @@
 				);
 				INFOPLIST_FILE = eventr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cessation.eventrapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cessation.even.tr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eventr/eventr-Bridging-Header.h";
@@ -444,7 +444,7 @@
 				);
 				INFOPLIST_FILE = eventr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cessation.eventrapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cessation.even.tr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eventr/eventr-Bridging-Header.h";

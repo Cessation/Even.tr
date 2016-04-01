@@ -35,7 +35,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         // uses the user's email to see if they are a new user by checking the parse backend. If they exist, the events list associated with that email is loaded from parse else, a new user is added to parse with with a empty events list
         
-        let parameters = ["fields": "email,first_name,last_name"]
+        let parameters = ["fields": "email,first_name,last_name,picture.type(large)"]
         FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler { (connection, result, error) -> Void in
             
             if error != nil {
@@ -47,21 +47,48 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
             let lastName = result.objectForKey("last_name") as? String
             
+            let profileImage = result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
+            
             if let email  = result.objectForKey("email") as? String{
                 let query = PFQuery(className: "User")
                 query.whereKey("email", equalTo: email)
                 query.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
                     
                     let user = users!.first
-                    let dict: [String:String] = ["firstName": firstName!, "lastName": lastName!, "email": email]
+                    let dict: [String:String] = ["firstName": firstName!, "lastName": lastName!, "email": email, "profileImage":profileImage!]
                     self.user = User(dictionary: dict)
+                    
                     if users?.count != 0 {
-                        self.user!.events = user!["events"] as? [Event]
-                        self.user!.myevents = user!["myevents"] as? [Event]
+                        
+                        var events: [Event]
+                        events = []
+                        var myevents: [Event]
+                        myevents = []
+                        let parseEvents = user!["events"] as! [PFObject]
+                        let parsemyEvents = user!["myevents"] as! [PFObject]
+                        
+                        for parseEvent in parseEvents {
+                            let dict:[String: AnyObject] = ["title":parseEvent["title"] as! String, "id":parseEvent["id"] as! String]
+                            let event = Event(dictionary:dict)
+                            event.picture = parseEvent["picture"] as? PFFile
+                            events.append(event)
+                        }
+                        
+                        for parsemyEvent in parsemyEvents {
+                            let dict:[String: AnyObject] = ["title":parsemyEvent["title"] as! String, "id":parsemyEvent["id"]]
+                            let event = Event(dictionary:dict)
+                            event.picture = parsemyEvent["picture"] as? PFFile
+                            myevents.append(event)
+                        }
+                        
+                        
+                        self.user!.events = events
+                        self.user!.myevents = myevents
                         self.user!.details = user!["details"] as? String
+
                          print("user loaded")
                     } else {
-                        ParseUser.postUser(firstName,lastName: lastName,email: email) { (success: Bool, error: NSError?) in
+                        ParseUser.postUser(firstName,lastName: lastName,email: email, profileImage: profileImage) { (success: Bool, error: NSError?) in
                             if success {
                                 print("user saved")
                             }

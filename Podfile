@@ -6,5 +6,6 @@ use_frameworks!
 target 'eventr' do
     pod 'Parse'
 	pod 'ALCameraViewController'
+    pod 'AFNetworking'
 end
 

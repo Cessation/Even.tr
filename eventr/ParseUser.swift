@@ -12,7 +12,7 @@ import Parse
 class ParseUser: NSObject {
     
     //in order to save memory should we remove the first/last name since this information can taken from facebook every time on login. Email would still be needed as a key.
-    class func postUser(firstName: String?, lastName: String?, email: String?
+    class func postUser(firstName: String?, lastName: String?, email: String?, profileImage: String?
         ,withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
         let user = PFObject(className: "User")
@@ -22,6 +22,7 @@ class ParseUser: NSObject {
         user["events"] = []
         user["myevents"] = []
         user["details"] = ""
+        user["profileImage"] = profileImage
         user.saveInBackgroundWithBlock(completion)
     }
     

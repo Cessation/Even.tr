@@ -14,8 +14,9 @@ class User: NSObject {
     var firstName: String?
     var lastName: String?
     var events: [Event]?
-    var myevents: [Event]?
+    var myevents: [Event]? //contains only the title, and id information
     var details: String?
+    var profileImage: String?
     
     init(dictionary: NSDictionary){
         
@@ -25,6 +26,7 @@ class User: NSObject {
         events = dictionary["events"] as? [Event]
         myevents = dictionary["myevents"] as? [Event]
         details = dictionary["details"] as? String
+        profileImage = dictionary["profileImage"] as? String
     }
    
 }
