@@ -25,7 +25,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = user.firstName! + " " + user.lastName!
-        
         detailsField.text = user.details
         detailsField.userInteractionEnabled = false
         detailsField.delegate = self
@@ -72,6 +71,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         }
         else {
             newDetailText = detailsField.text
+            view.endEditing(true)
             detailsField.userInteractionEnabled = false
             detailsField.layer.borderWidth = 0
             editButton.setTitle("Edit", forState: .Normal)
