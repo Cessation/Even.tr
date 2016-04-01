@@ -31,11 +31,10 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         if(detailsField.text == ""){
             detailsField.text = "Write something about yourself here..."
             detailsField.textColor = UIColor.lightGrayColor()
-        
         }
       
         self.view.backgroundColor = UIColor(red:0.76, green:0.96, blue:1.00, alpha:1.0)
-
+        profileImage.setImageWithURL(NSURL(string: user.profileImage!)!)
         
         // Do any additional setup after loading the view.
     }
@@ -89,6 +88,8 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -100,3 +101,5 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     */
 
 }
+
+

@@ -227,7 +227,7 @@
         <!--Profile View Controller-->
         <scene sceneID="OcM-5f-pYW">
             <objects>
-                <viewController id="p9m-6q-bcM" customClass="ProfileViewController" customModule="eventr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="p9m-6q-bcM" customClass="ProfileViewController" customModule="eventr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Sa-Tl-jN6"/>
                         <viewControllerLayoutGuide type="bottom" id="PTW-cC-LSn"/>
@@ -240,14 +240,14 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="762"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uCh-UB-CWT">
-                                        <rect key="frame" x="28" y="18" width="129" height="117"/>
+                                        <rect key="frame" x="28" y="12" width="129" height="129"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="129" id="ACw-lV-ek1"/>
-                                            <constraint firstAttribute="height" constant="117" id="OOG-iN-oxH"/>
+                                            <constraint firstAttribute="height" constant="129" id="OOG-iN-oxH"/>
                                         </constraints>
                                     </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O64-4F-Xqf">
-                                        <rect key="frame" x="14" y="585" width="330" height="145"/>
+                                        <rect key="frame" x="28" y="585" width="330" height="145"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gwQ-iR-Sub">
                                             <size key="itemSize" width="105" height="108"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -267,20 +267,13 @@
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events you are going to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcJ-ig-ID6">
-                                        <rect key="frame" x="14" y="556" width="179" height="21"/>
+                                        <rect key="frame" x="28" y="556" width="179" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KbS-MA-x0G">
-                                        <rect key="frame" x="28" y="151" width="316" height="150"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1nl-3v-Fra">
-                                        <rect key="frame" x="14" y="361" width="330" height="145"/>
+                                        <rect key="frame" x="28" y="361" width="330" height="145"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qa7-pK-FWG">
                                             <size key="itemSize" width="105" height="108"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -300,7 +293,7 @@
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vp6-Ur-i2L">
-                                        <rect key="frame" x="14" y="332" width="91" height="21"/>
+                                        <rect key="frame" x="28" y="332" width="91" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -311,26 +304,33 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KbS-MA-x0G">
+                                        <rect key="frame" x="28" y="161" width="316" height="150"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="KbS-MA-x0G" firstAttribute="leading" secondItem="XsT-ls-Tvr" secondAttribute="leading" constant="28" id="0hz-5l-yee"/>
-                                    <constraint firstAttribute="trailing" secondItem="O64-4F-Xqf" secondAttribute="trailing" constant="31" id="4O8-PX-8Fo"/>
+                                    <constraint firstAttribute="trailing" secondItem="O64-4F-Xqf" secondAttribute="trailing" constant="17" id="4O8-PX-8Fo"/>
                                     <constraint firstItem="uCh-UB-CWT" firstAttribute="leading" secondItem="KbS-MA-x0G" secondAttribute="leading" id="6CY-yZ-92o"/>
-                                    <constraint firstItem="KbS-MA-x0G" firstAttribute="top" secondItem="uCh-UB-CWT" secondAttribute="bottom" constant="16" id="8UA-hl-pdx"/>
-                                    <constraint firstItem="vp6-Ur-i2L" firstAttribute="top" secondItem="KbS-MA-x0G" secondAttribute="bottom" constant="31" id="9sj-UR-Mbw"/>
+                                    <constraint firstItem="KbS-MA-x0G" firstAttribute="top" secondItem="uCh-UB-CWT" secondAttribute="bottom" constant="20" id="8UA-hl-pdx"/>
+                                    <constraint firstItem="vp6-Ur-i2L" firstAttribute="top" secondItem="KbS-MA-x0G" secondAttribute="bottom" constant="21" id="9sj-UR-Mbw"/>
                                     <constraint firstItem="TcJ-ig-ID6" firstAttribute="top" secondItem="XsT-ls-Tvr" secondAttribute="top" constant="556" id="E4I-jn-UR7"/>
                                     <constraint firstItem="P1z-rs-cbK" firstAttribute="leading" secondItem="uCh-UB-CWT" secondAttribute="trailing" constant="7" id="ETR-SZ-nuq"/>
                                     <constraint firstItem="vp6-Ur-i2L" firstAttribute="leading" secondItem="TcJ-ig-ID6" secondAttribute="leading" id="GD3-Hy-ahZ"/>
-                                    <constraint firstItem="1nl-3v-Fra" firstAttribute="leading" secondItem="XsT-ls-Tvr" secondAttribute="leading" constant="14" id="IAU-Nh-Wa1"/>
-                                    <constraint firstAttribute="bottom" secondItem="uCh-UB-CWT" secondAttribute="bottom" constant="627" id="Ns6-dm-vH7"/>
-                                    <constraint firstItem="uCh-UB-CWT" firstAttribute="top" secondItem="XsT-ls-Tvr" secondAttribute="top" constant="18" id="NyB-Nj-bMH"/>
+                                    <constraint firstItem="1nl-3v-Fra" firstAttribute="leading" secondItem="XsT-ls-Tvr" secondAttribute="leading" constant="28" id="IAU-Nh-Wa1"/>
+                                    <constraint firstAttribute="bottom" secondItem="uCh-UB-CWT" secondAttribute="bottom" constant="621" id="Ns6-dm-vH7"/>
+                                    <constraint firstItem="uCh-UB-CWT" firstAttribute="top" secondItem="XsT-ls-Tvr" secondAttribute="top" constant="12" id="NyB-Nj-bMH"/>
                                     <constraint firstItem="1nl-3v-Fra" firstAttribute="top" secondItem="vp6-Ur-i2L" secondAttribute="bottom" constant="8" symbolic="YES" id="V5X-uz-2ch"/>
                                     <constraint firstItem="O64-4F-Xqf" firstAttribute="top" secondItem="TcJ-ig-ID6" secondAttribute="bottom" constant="8" symbolic="YES" id="VPb-bo-dly"/>
-                                    <constraint firstItem="O64-4F-Xqf" firstAttribute="leading" secondItem="XsT-ls-Tvr" secondAttribute="leading" constant="14" id="Xoi-Eg-nQh"/>
+                                    <constraint firstItem="O64-4F-Xqf" firstAttribute="leading" secondItem="XsT-ls-Tvr" secondAttribute="leading" constant="28" id="Xoi-Eg-nQh"/>
                                     <constraint firstAttribute="trailing" secondItem="uCh-UB-CWT" secondAttribute="trailing" constant="218" id="a4K-WW-ppe"/>
                                     <constraint firstItem="TcJ-ig-ID6" firstAttribute="top" secondItem="1nl-3v-Fra" secondAttribute="bottom" constant="50" id="b6o-Kd-BkD"/>
-                                    <constraint firstItem="vp6-Ur-i2L" firstAttribute="leading" secondItem="XsT-ls-Tvr" secondAttribute="leading" constant="14" id="gCZ-dM-KzB"/>
-                                    <constraint firstAttribute="trailing" secondItem="1nl-3v-Fra" secondAttribute="trailing" constant="31" id="hoS-7c-jyR"/>
+                                    <constraint firstItem="vp6-Ur-i2L" firstAttribute="leading" secondItem="XsT-ls-Tvr" secondAttribute="leading" constant="28" id="gCZ-dM-KzB"/>
+                                    <constraint firstAttribute="trailing" secondItem="1nl-3v-Fra" secondAttribute="trailing" constant="17" id="hoS-7c-jyR"/>
                                     <constraint firstItem="uCh-UB-CWT" firstAttribute="centerY" secondItem="P1z-rs-cbK" secondAttribute="centerY" id="kR0-dG-ZTa"/>
                                     <constraint firstItem="vp6-Ur-i2L" firstAttribute="top" secondItem="XsT-ls-Tvr" secondAttribute="top" constant="332" id="pW3-pL-Qff"/>
                                     <constraint firstItem="uCh-UB-CWT" firstAttribute="leading" secondItem="XsT-ls-Tvr" secondAttribute="leading" constant="28" id="pXR-Ff-6F3"/>
