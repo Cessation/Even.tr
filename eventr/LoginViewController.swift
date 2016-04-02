@@ -54,36 +54,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 query.whereKey("email", equalTo: email)
                 query.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
                     
-                    let user = users!.first
                     let dict: [String:String] = ["firstName": firstName!, "lastName": lastName!, "email": email, "profileImage":profileImage!]
                     self.user = User(dictionary: dict)
                     
                     if users?.count != 0 {
-                        
-                        var events: [Event]
-                        events = []
-                        var myevents: [Event]
-                        myevents = []
-                        let parseEvents = user!["events"] as! [PFObject]
-                        let parsemyEvents = user!["myevents"] as! [PFObject]
-                        
-                        for parseEvent in parseEvents {
-                            let dict:[String: AnyObject] = ["title":parseEvent["title"] as! String, "id":parseEvent["id"] as! String]
-                            let event = Event(dictionary:dict)
-                            event.picture = parseEvent["picture"] as? PFFile
-                            events.append(event)
-                        }
-                        
-                        for parsemyEvent in parsemyEvents {
-                            let dict:[String: AnyObject] = ["title":parsemyEvent["title"] as! String, "id":parsemyEvent["id"]]
-                            let event = Event(dictionary:dict)
-                            event.picture = parsemyEvent["picture"] as? PFFile
-                            myevents.append(event)
-                        }
-                        
-                        
-                        self.user!.events = events
-                        self.user!.myevents = myevents
+                        let user = users!.first
+                        self.user!.events = user!["events"] as? [String]
+                        self.user!.myevents = user!["myevents"] as? [String]
                         self.user!.details = user!["details"] as? String
 
                          print("user loaded")

@@ -13,8 +13,8 @@ class User: NSObject {
     var email: String?
     var firstName: String?
     var lastName: String?
-    var events: [Event]?
-    var myevents: [Event]? //contains only the title, and id information
+    var events: [String]?
+    var myevents: [String]? //contains only the title, and id information
     var details: String?
     var profileImage: String?
     
@@ -23,8 +23,8 @@ class User: NSObject {
         firstName = dictionary["firstName"] as? String
         lastName = dictionary["lastName"] as? String
         email = dictionary["email"] as? String
-        events = dictionary["events"] as? [Event]
-        myevents = dictionary["myevents"] as? [Event]
+        events = dictionary["events"] as? [String]
+        myevents = dictionary["myevents"] as? [String]
         details = dictionary["details"] as? String
         profileImage = dictionary["profileImage"] as? String
     }

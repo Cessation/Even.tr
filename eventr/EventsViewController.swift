@@ -101,16 +101,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let event = events![indexpath!.row]
             let eventdetailsViewController = segue.destinationViewController as! EventDetailsViewController
         
-            let parseAttendees = event["attendees"] as! [PFObject]
-            var attendees:[User]
-            attendees = []
-            for parseAttendee in parseAttendees {
-                let dict:[String:AnyObject] = ["firstName":parseAttendee["firstName"] as! String, "lastName":parseAttendee["lastName"] as! String, "email":parseAttendee["email"] as! String]
-                let attendee = User(dictionary:dict)
-                attendees.append(attendee)
-            }
-            
-            let dict: [String: AnyObject] = ["title":event["title"] as! String, "description":event["description"] as! String, "startTime":event["startTime"] as! String, "endTime":event["endTime"] as! String, "startDate":event["startDate"] as! String, "endDate":event["endDate"] as! String,"picture":event["picture"] as! PFFile, "author": event["author"] as! String, "id": event["id"] as! String, "attendees": attendees, "location":event["location"]]
+            let dict: [String: AnyObject] = ["title":event["title"] as! String, "description":event["description"] as! String, "startTime":event["startTime"] as! String, "endTime":event["endTime"] as! String, "startDate":event["startDate"] as! String, "endDate":event["endDate"] as! String,"picture":event["picture"] as! PFFile, "author": event["author"] as! String, "id": event["id"] as! String, "attendees": event["attendees"] as! [String], "location":event["location"] as! String]
             eventdetailsViewController.event = Event(dictionary: dict)
             break
             
