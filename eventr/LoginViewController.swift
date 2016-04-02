@@ -10,8 +10,8 @@ import UIKit
 import Parse
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-   
-    var user: User?
+    
+    var email: String?
     
     let FBLoginButton: FBSDKLoginButton = {
         let button = FBSDKLoginButton()
@@ -50,19 +50,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             let profileImage = result.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
             
             if let email  = result.objectForKey("email") as? String{
+                self.email = email
                 let query = PFQuery(className: "User")
                 query.whereKey("email", equalTo: email)
                 query.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
                     
-                    let dict: [String:String] = ["firstName": firstName!, "lastName": lastName!, "email": email, "profileImage":profileImage!]
-                    self.user = User(dictionary: dict)
-                    
                     if users?.count != 0 {
-                        let user = users!.first
-                        self.user!.events = user!["events"] as? [String]
-                        self.user!.myevents = user!["myevents"] as? [String]
-                        self.user!.details = user!["details"] as? String
-
                          print("user loaded")
                     } else {
                         ParseUser.postUser(firstName,lastName: lastName,email: email, profileImage: profileImage) { (success: Bool, error: NSError?) in
@@ -74,9 +67,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             }
                         }
                         
-                        self.user!.events = []
-                        self.user!.myevents = []
-                        self.user!.details = ""
                     }
                     self.performSegueWithIdentifier("EventsPage", sender: self)
                 }
@@ -115,9 +105,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
          let navigationViewController0 = tabBarController.viewControllers![0] as! UINavigationController
          let navigationViewController1 = tabBarController.viewControllers![1] as! UINavigationController
          let profileViewController = navigationViewController1.viewControllers[0] as! ProfileViewController
-        profileViewController.user = user
+        profileViewController.email = email
         let eventsViewController = navigationViewController0.viewControllers[0] as! EventsViewController
-        eventsViewController.user = user
+        eventsViewController.email = email
   
         
     }

@@ -13,7 +13,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var tableView: UITableView!
     var events: [PFObject]?
-    var user: User?
+    var email: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +107,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             case "CreateEventSegue":
             let createeventViewController = segue.destinationViewController as! CreateEventViewController
-            createeventViewController.user = user
+            createeventViewController.email = email
             break
             
         default: print("Uknown Segue!")

@@ -18,25 +18,39 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var detailsField: UITextView!
     
-    var user: User!
+    var email: String?
     var oldDetailText: String?
     var newDetailText: String?
+    var events: [PFObject]?
+    var myevents:[PFObject]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = user.firstName! + " " + user.lastName!
-        detailsField.text = user.details
-        detailsField.userInteractionEnabled = false
-        detailsField.delegate = self
-        if(detailsField.text == ""){
-            detailsField.text = "Write something about yourself here..."
-            detailsField.textColor = UIColor.lightGrayColor()
-        }
-      
-        self.view.backgroundColor = UIColor(red:0.76, green:0.96, blue:1.00, alpha:1.0)
-        profileImage.setImageWithURL(NSURL(string: user.profileImage!)!)
-        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let query = PFQuery(className: "User")
+        query.whereKey("email", equalTo: email!)
+        query.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
+            
+        let user = users!.first
+        self.nameLabel.text = (user!["firstName"] as? String)! + (user!["lastName"] as? String)!
+        self.detailsField.text = user!["details"] as? String
+         self.profileImage.setImageWithURL(NSURL(string: (user!["profileImage"] as? String)!)!)
+        self.detailsField.userInteractionEnabled = false
+        self.detailsField.delegate = self
+        if(self.detailsField.text == ""){
+            self.detailsField.text = "Write something about yourself here..."
+            self.detailsField.textColor = UIColor.lightGrayColor()
+            }
+        
+        self.view.backgroundColor = UIColor(red:0.76, green:0.96, blue:1.00, alpha:1.0)
+       
+
+        
+        }
     }
 
     override func didReceiveMemoryWarning() {

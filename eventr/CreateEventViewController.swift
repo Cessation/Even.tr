@@ -8,6 +8,7 @@
 
 import UIKit
 import ALCameraViewController
+import Parse
 
 class CreateEventViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate, UITextViewDelegate {
 
@@ -27,7 +28,8 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
     var endTime: String!
     var finalImage: UIImage!
     //var sendingEvent : Event!
-    var user: User?
+    var email: String?
+    var user: PFObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,16 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
         detailsTextField.textColor = UIColor.lightGrayColor()
         
         self.view.backgroundColor = UIColor(red:0.76, green:0.96, blue:1.00, alpha:1.0)
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let query = PFQuery(className: "User")
+        query.whereKey("email", equalTo: email!)
+        query.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
+        self.user = users!.first
+        }
 
     }
     
@@ -197,7 +209,7 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
         eDate = dateFormatter.stringFromDate(endDate.date)
         endTime = timeFormatter.stringFromDate(endDate.date)
         
-            ParseEvent.postUserEvent(eventTitleField.text!, desc: detailsTextField.text!, picture: finalImage!, startDate: sDate, startTime: startTime, endDate: eDate, endTime: endTime, hashtags: [], author: user!.firstName! + " " + user!.lastName!, id: "", location: locationTextField.text!) { (success: Bool, error: NSError?) in
+            ParseEvent.postUserEvent(eventTitleField.text!, desc: detailsTextField.text!, picture: finalImage!, startDate: sDate, startTime: startTime, endDate: eDate, endTime: endTime, hashtags: [], author: ((user!["firstName"] as? String)! + " " + (user!["lastName"] as? String)!), id: eventTitleField.text! + email!, location: locationTextField.text!) { (success: Bool, error: NSError?) in
                         if success {
                             print("event saved")
                         }
