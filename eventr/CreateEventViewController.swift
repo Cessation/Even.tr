@@ -56,7 +56,6 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
         query.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
         self.user = users!.first
         }
-
     }
     
     func tapped(sender:UITapGestureRecognizer){
@@ -217,6 +216,11 @@ class CreateEventViewController: UIViewController, UINavigationControllerDelegat
                             print(error?.localizedDescription)
                         }
         }
+            var myevents = user!["myevents"] as! [String]
+            myevents.append(eventTitleField.text! + email!)
+            user!["myevents"] = myevents
+            user?.saveInBackground()
+            print("done this shit", user)
         
         self.dismissViewControllerAnimated(true, completion:{})
         }
