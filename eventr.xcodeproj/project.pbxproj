@@ -23,6 +23,8 @@
 		66AF8C6F1CA3052F006E8B48 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66AF8C6D1CA3052F006E8B48 /* FBSDKCoreKit.framework */; };
 		66AF8C701CA3052F006E8B48 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66AF8C6E1CA3052F006E8B48 /* FBSDKLoginKit.framework */; };
 		66B131181CA4F0E5000AAC4A /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B131171CA4F0E5000AAC4A /* EventTableViewCell.swift */; };
+		66C6F78F1CB5C8A5005DC4FA /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C6F78E1CB5C8A5005DC4FA /* EventCollectionViewCell.swift */; };
+		66C6F7911CB5C8BB005DC4FA /* MyEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C6F7901CB5C8BB005DC4FA /* MyEventCollectionViewCell.swift */; };
 		CB4A2D31078D77D302156A0C /* Pods_eventr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FAADC1F3E0825509FBBB19C /* Pods_eventr.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		66AF8C6D1CA3052F006E8B48 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		66AF8C6E1CA3052F006E8B48 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		66B131171CA4F0E5000AAC4A /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		66C6F78E1CB5C8A5005DC4FA /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
+		66C6F7901CB5C8BB005DC4FA /* MyEventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventCollectionViewCell.swift; sourceTree = "<group>"; };
 		B3B25FBA4900770161C51146 /* Pods-eventr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eventr.release.xcconfig"; path = "Pods/Target Support Files/Pods-eventr/Pods-eventr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				66B131171CA4F0E5000AAC4A /* EventTableViewCell.swift */,
+				66C6F78E1CB5C8A5005DC4FA /* EventCollectionViewCell.swift */,
+				66C6F7901CB5C8BB005DC4FA /* MyEventCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -290,12 +296,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				012961C11C7EAB1000E88ED9 /* LoginViewController.swift in Sources */,
+				66C6F78F1CB5C8A5005DC4FA /* EventCollectionViewCell.swift in Sources */,
 				015D09F01CA37AAD006F36FB /* ParseEvent.swift in Sources */,
 				66455B4A1CA832F70051DA17 /* ProfileViewController.swift in Sources */,
 				012961BF1C7EAB1000E88ED9 /* AppDelegate.swift in Sources */,
 				66AF8C651CA213D2006E8B48 /* EventsViewController.swift in Sources */,
 				66455B461CA59CEE0051DA17 /* User.swift in Sources */,
 				66B131181CA4F0E5000AAC4A /* EventTableViewCell.swift in Sources */,
+				66C6F7911CB5C8BB005DC4FA /* MyEventCollectionViewCell.swift in Sources */,
 				66455B481CA5B4150051DA17 /* ParseUser.swift in Sources */,
 				015D09F11CA37D80006F36FB /* Event.swift in Sources */,
 				66455B4C1CA833140051DA17 /* EventDetailsViewController.swift in Sources */,

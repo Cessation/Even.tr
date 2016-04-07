@@ -10,9 +10,11 @@ import UIKit
 import AFNetworking
 import Parse
 
-class ProfileViewController: UIViewController, UITextViewDelegate {
+class ProfileViewController: UIViewController, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    
+   
+    @IBOutlet weak var eventsCollectionView: UICollectionView!
+    @IBOutlet weak var myeventsCollectionView: UICollectionView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
@@ -21,8 +23,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     var email: String?
     var oldDetailText: String?
     var newDetailText: String?
-    var events: [PFObject]?
-    var myevents:[PFObject]?
+    var events: [String]?
+    var myevents:[String]?
+    var user: PFObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +37,15 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         let query = PFQuery(className: "User")
         query.whereKey("email", equalTo: email!)
         query.findObjectsInBackgroundWithBlock { (users: [PFObject]?, error: NSError?) -> Void in
-            
-        let user = users!.first
-        self.nameLabel.text = (user!["firstName"] as? String)! + (user!["lastName"] as? String)!
-        self.detailsField.text = user!["details"] as? String
-         self.profileImage.setImageWithURL(NSURL(string: (user!["profileImage"] as? String)!)!)
+        
+        self.eventsCollectionView.delegate = self
+        self.eventsCollectionView.dataSource = self
+        self.myeventsCollectionView.delegate = self
+        self.myeventsCollectionView.dataSource = self
+        self.user = users!.first
+        self.nameLabel.text = (self.user!["firstName"] as? String)! + (self.user!["lastName"] as? String)!
+        self.detailsField.text = self.user!["details"] as? String
+         self.profileImage.setImageWithURL(NSURL(string: (self.user!["profileImage"] as? String)!)!)
         self.detailsField.userInteractionEnabled = false
         self.detailsField.delegate = self
         if(self.detailsField.text == ""){
@@ -47,8 +54,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
             }
         
         self.view.backgroundColor = UIColor(red:0.76, green:0.96, blue:1.00, alpha:1.0)
-       
-
+        self.events = self.user!["events"] as? [String]
+        self.myevents = self.user!["myevents"] as? [String]
+        //print(self.myevents)
         
         }
     }
@@ -92,18 +100,66 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
             if(oldDetailText != newDetailText)
             {
                 //update information onto parse!
-                
-//                let query = PFQuery(className: "User")
-//                query.whereKey("email", equalTo: user.email!)
-//                query.findObjectsInBackgroundWithBlock { (user: [PFObject]?, error: NSError?) -> Void in
-//                    
-//                    user!["details"] = newDetailText
+               
+                user!["details"] = newDetailText
+                user?.saveInBackground()
 
             }
         }
     }
     
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+        
+        if(collectionView == eventsCollectionView){
+            if let events = events {
+                return events.count
+            } else {
+                return 0
+            }
+        } else {
+            
+            if let myevents = myevents {
+                return myevents.count
+            } else {
+                return 0
+            }
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
+        
+        if (collectionView == eventsCollectionView) {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EventCell", forIndexPath: indexPath) as! EventCollectionViewCell
+            let eventid = events![indexPath.row]
+            let query = PFQuery(className: "Event")
+            query.whereKey("id", equalTo: eventid)
+            query.findObjectsInBackgroundWithBlock { (events: [PFObject]?, error: NSError?) -> Void in
+                
+                let event = events!.first
+                cell.postPic = event!["picture"] as? PFFile
+                cell.eventTitle.text = event!["title"] as? String
+                
+            }
+    
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MyEventCell", forIndexPath: indexPath) as! MyEventCollectionViewCell
+            let eventid = myevents![indexPath.row]
+            let query = PFQuery(className: "Event")
+            query.whereKey("id", equalTo: eventid)
+            query.findObjectsInBackgroundWithBlock { (events: [PFObject]?, error: NSError?) -> Void in
+                
+                let event = events!.first
+                cell.postPic = event!["picture"] as? PFFile
+                cell.eventTitle.text = event!["title"] as? String
+                print(event!["title"] as? String)
+                
+            }
+
+            return cell
+        }
+    }
     /*
     // MARK: - Navigation
 

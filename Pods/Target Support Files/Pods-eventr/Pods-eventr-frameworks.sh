@@ -88,10 +88,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-eventr/ALCameraViewController.framework"
   install_framework "Pods-eventr/Bolts.framework"
   install_framework "Pods-eventr/Parse.framework"
+  install_framework "Pods-eventr/ParseUI.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-eventr/AFNetworking.framework"
   install_framework "Pods-eventr/ALCameraViewController.framework"
   install_framework "Pods-eventr/Bolts.framework"
   install_framework "Pods-eventr/Parse.framework"
+  install_framework "Pods-eventr/ParseUI.framework"
 fi
