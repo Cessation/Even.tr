@@ -105,7 +105,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
          let navigationViewController0 = tabBarController.viewControllers![0] as! UINavigationController
          let navigationViewController1 = tabBarController.viewControllers![1] as! UINavigationController
          let profileViewController = navigationViewController1.viewControllers[0] as! ProfileViewController
-        profileViewController.email = email
+//        profileViewController.email = email
         let eventsViewController = navigationViewController0.viewControllers[0] as! EventsViewController
         eventsViewController.email = email
   
